@@ -13,7 +13,7 @@ async function signupFormHandler(event) {
                 password
             }),
             headers: { 'Content-Type': 'application/json' }
-        })
+        });
         if (response.ok) {
             console.log('success');
         } else {

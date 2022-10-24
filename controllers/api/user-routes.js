@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const { User, Post, Vote, Comment } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 router.get('/', (req, res) => {
     User.findAll({
@@ -29,12 +29,6 @@ router.get('/:id', (req, res) => {
                     attributes: ['title']
                 }
             },
-            {
-                model: Post,
-                attributes: ['title'],
-                through: Vote,
-                as: 'voted_posts'
-            }
         ],
         where: {
             id: req.params.id
